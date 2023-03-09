@@ -5,7 +5,6 @@ Votes = []
 Candidates = []
 County = []
 Net_total_Votes = 0
-Candidates_dictionary = {}
 with open(read_fpath, 'r') as f: 
     reader = csv.reader(f, delimiter=',')
     header_row = next(f)
@@ -16,25 +15,18 @@ with open(read_fpath, 'r') as f:
         Candidates.append(row[2])
     for x in range(len(Votes)):
         Net_total_Votes = Net_total_Votes + 1
-# #  A complete list of candidates who received votes
-    candidatesSet = set(Candidates)
-    for items in candidatesSet:
+# * The total number of votes each candidate won = total particular votes
+    for items in set(Candidates):
         count = Candidates.count(items)  
-        print(f"{items} appears {count} times") 
+# * The percentage of votes each candidate won = "particular votes/ total votes"
+        percentage_votes = round((count/Net_total_Votes)*100)
+        print(f"{items}: {percentage_votes}%({count})")
+# * The winner of the election based on popular vote.
 # Names = list(dict.fromkeys(Candidates))
-#       # * The total number of votes cast
-
-# print(f"Total Net Votes = {Net_total_Votes}")
+      # * The total number of votes cast
+print(f"Total Net Votes = {Net_total_Votes}")
+print(winner)
 # print(Names[0])
 # print(Names[1])
 # print(Names[2])
-# * The percentage of votes each candidate won = "particular votes/ total votes"
-# * The total number of votes each candidate won = total particular votes
-# * The winner of the election based on popular vote.
-# Your analysis should look similar to the following:
-
-#   Charles Casper Stockham: 23.049% (85213)
-#   Diana DeGette: 73.812% (272892)
-#   Raymon Anthony Doane: 3.139% (11606)
-#   -------------------------
 #   Winner: Diana DeGette
