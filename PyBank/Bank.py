@@ -7,7 +7,7 @@ Date = []
 Profit_losses = []
 Profit_losses_a = []
 Profit_losses_b = []
-Change_profit_losses = []  
+Change_profit_losses = [] 
 Net_total_amount = 0
 sum_of_change = 0
 with open(read_fpath, 'r') as f: 
@@ -16,6 +16,10 @@ with open(read_fpath, 'r') as f:
         #print(row[0], row[1])
         Date.append(row[0])
         Profit_losses.append(row[1])
+        # * The total number of months included in the dataset
+    for x in range(1, len(Date)):
+        Total_months = x
+        x = x + 1
     for x in range(1, len(Profit_losses)):
         Net_total_amount = Net_total_amount + int(Profit_losses[x])
         Profit_losses_a.append(Profit_losses[x])
@@ -31,6 +35,7 @@ with open(read_fpath, 'r') as f:
     greatest_increase_profits = max(Change_profit_losses)
     greatest_decrease_profits = min(Change_profit_losses)
 # print(Change_profit_losses)
+print(f"The total number of months included in the dataset is = {Total_months}")
 print(f"Total Net total amount is = {Net_total_amount}")
 print(f"Total Average change is = {Average_change}")
 print(f"Greatest Increase in Profits = {greatest_increase_profits}")
