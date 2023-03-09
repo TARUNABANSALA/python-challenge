@@ -1,7 +1,5 @@
 import csv
 import math
-from dateutil.relativedelta import relativedelta
-from datetime import date
 read_fpath = ("C:/Users/panka/OneDrive/Desktop/Class Folder/Github/python-challenge/PyBank/Resources/budget_data.csv")
 Date = []
 Profit_losses = []
@@ -16,12 +14,14 @@ with open(read_fpath, 'r') as f:
         #print(row[0], row[1])
         Date.append(row[0])
         Profit_losses.append(row[1])
-        # * The total number of months included in the dataset
+# * The total number of months included in the dataset
     for x in range(1, len(Date)):
         Total_months = x
         x = x + 1
+# * The net total amount of "Profit/Losses" over the entire period
     for x in range(1, len(Profit_losses)):
         Net_total_amount = Net_total_amount + int(Profit_losses[x])
+# * The changes in "Profit/Losses" over the entire period, and then the average of those changes
         Profit_losses_a.append(Profit_losses[x])
     Profit_losses_a = Profit_losses_a[:-1]
     for y in range(2, len(Profit_losses)):
@@ -31,10 +31,9 @@ with open(read_fpath, 'r') as f:
         Change_profit_losses.append(int(Profit_losses_b[i]) - int(Profit_losses_a[i]))
         sum_of_change = (sum_of_change + int(Change_profit_losses[i]))
     Average_change = (sum_of_change/85) 
-    #  The greatest increase in profits (date and amount) over the entire period
+#  The greatest increase in profits (date and amount) over the entire period
     greatest_increase_profits = max(Change_profit_losses)
     greatest_decrease_profits = min(Change_profit_losses)
-# print(Change_profit_losses)
 print(f"The total number of months included in the dataset is = {Total_months}")
 print(f"Total Net total amount is = {Net_total_amount}")
 print(f"Total Average change is = {Average_change}")
