@@ -1,6 +1,6 @@
 import csv
 import math
-read_fpath = ("C:/Users/panka/OneDrive/Desktop/Class Folder/MODULE 3/Starter_Code/Instructions/PyPoll/Resources/election_data.csv")
+read_fpath = ("C:/Users/panka/OneDrive/Desktop/Class Folder/Github/python-challenge/PyPoll/Resources/election_data.csv")
 Votes = []
 Candidates = []
 County = []
