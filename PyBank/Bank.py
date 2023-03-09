@@ -2,7 +2,7 @@ import csv
 import math
 from dateutil.relativedelta import relativedelta
 from datetime import date
-read_fpath = ("C:/Users/panka/OneDrive/Desktop/Class Folder/MODULE 3/Starter_Code/Instructions/PyBank/Resources/budget_data.csv")
+read_fpath = ("C:/Users/panka/OneDrive/Desktop/Class Folder/Github/python-challenge/PyBank/Resources/budget_data.csv")
 Date = []
 Profit_losses = []
 Profit_losses_a = []
