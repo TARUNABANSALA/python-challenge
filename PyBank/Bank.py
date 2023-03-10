@@ -5,15 +5,18 @@ Date = []
 Profit_losses = []
 Profit_losses_a = []
 Profit_losses_b = []
-Change_profit_losses = [] 
+change_profit_losses_list = [] 
 Net_total_amount = 0
 sum_of_change = 0
+dictionary = {}
 with open(read_fpath, 'r') as f: 
     reader = csv.reader(f, delimiter=',')
     for row in reader: 
         #print(row[0], row[1])
         Date.append(row[0])
         Profit_losses.append(row[1])
+        if(row[1] != 'Profit/losses'):
+            dictionary[row[1]]= row[0]
 # * The total number of months included in the dataset
     for x in range(1, len(Date)):
         Total_months = x
@@ -27,18 +30,27 @@ with open(read_fpath, 'r') as f:
     for y in range(2, len(Profit_losses)):
         Profit_losses_b.append(Profit_losses[y])
         # Made two list A profit loss a and B profit loss 2
+    changeProfitLossDict = {}
+    greatest_increase_profits_date = ''
+    greatest_decrease_profits_date = ''
     for i in range(0, len(Profit_losses_a)):
-        Change_profit_losses.append(int(Profit_losses_b[i]) - int(Profit_losses_a[i]))
-        sum_of_change = (sum_of_change + int(Change_profit_losses[i]))
-    Average_change = (sum_of_change/85) 
+        changeInProfitLoss = int(Profit_losses_b[i]) - int(Profit_losses_a[i])
+        change_profit_losses_list.append(changeInProfitLoss)
+        dateOfChange = dictionary.get(Profit_losses_b[i])
+        changeProfitLossDict[changeInProfitLoss] = dateOfChange
+        sum_of_change = (sum_of_change + int(change_profit_losses_list[i]))
+    Average_change = (sum_of_change/len(change_profit_losses_list)) 
 #  The greatest increase in profits (date and amount) over the entire period
-    greatest_increase_profits = max(Change_profit_losses)
-    greatest_decrease_profits = min(Change_profit_losses)
+    greatest_increase_profits = max(change_profit_losses_list)
+    greatest_increase_profits_date = changeProfitLossDict.get(greatest_increase_profits)
+    greatest_decrease_profits = min(change_profit_losses_list)
+    greatest_decrease_profits_date = changeProfitLossDict.get(greatest_decrease_profits)
+    
 print(f"The total number of months included in the dataset is = {Total_months}")
 print(f"Total Net total amount is = {Net_total_amount}")
 print(f"Total Average change is = {Average_change}")
-print(f"Greatest Increase in Profits = {greatest_increase_profits}")
-print(f"Greatest Decrease in Profits = {greatest_decrease_profits}")
+print(f"Greatest Increase in Profits = {greatest_increase_profits_date} {greatest_increase_profits}")
+print(f"Greatest Decrease in Profits = {greatest_decrease_profits_date} {greatest_decrease_profits}")
 
 
   
