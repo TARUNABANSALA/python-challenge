@@ -1,6 +1,7 @@
 import csv
 import math
 read_fpath = ("C:/Users/panka/OneDrive/Desktop/Class Folder/Github/python-challenge/PyPoll/Resources/election_data.csv")
+# Assigning variables
 Ballotid = []
 Candidates = []
 Net_total_Votes = 0
@@ -23,9 +24,6 @@ with open(read_fpath, 'r') as f:
     Candidates_sort_list = sorted(list(Candidates_set))
     for items in Candidates_sort_list:
         count = Candidates.count(items)  
-        if(count > maxVotes):
-            winner = items
-            maxVotes = count
 # * The percentage of votes each candidate won = "particular votes/ total votes"
         percentage_votes = round(((count/Net_total_Votes)*100), 3)
 # * The total number of votes each candidate won
@@ -33,7 +31,9 @@ with open(read_fpath, 'r') as f:
         candidate_percentage_votes.append(percentage_votes)
         candidate_count.append(count)
 # * The winner of the election based on popular vote.
-      # * The total number of votes cast
+        if(count > maxVotes):
+            winner = items
+            maxVotes = count
 print("```text")
 print("Election Results")
 print("-------------------------")
