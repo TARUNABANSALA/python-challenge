@@ -1,6 +1,7 @@
 import csv
 import math
-read_fpath = ("C:/Users/panka/OneDrive/Desktop/Class Folder/Github/python-challenge/PyBank/Resources/budget_data.csv")
+read_fpath = ("PyBank/Resources/budget_data.csv")
+# Assigning variables
 change_profit_losses_list = [] 
 netAmount = 0
 sum_of_change = 0
@@ -33,7 +34,7 @@ with open(read_fpath, 'r') as f:
         changeProfitLossDict[changeInProfitLoss] = dateOfChange
         sum_of_change = (sum_of_change + int(change_profit_losses_list[i]))
         # Calulating the average change
-    Average_change = (sum_of_change/len(change_profit_losses_list)) 
+    Average_change = round((sum_of_change/len(change_profit_losses_list)), 2) 
 #  The greatest increase in profits (date and amount) over the entire period
     greatest_increase_profits = max(change_profit_losses_list)
     greatest_increase_profits_date = changeProfitLossDict.get(greatest_increase_profits)
@@ -48,9 +49,9 @@ print(f"Average change = {Average_change}")
 print(f"Greatest Increase in Profits = {greatest_increase_profits_date} {greatest_increase_profits}")
 print(f"Greatest Decrease in Profits = {greatest_decrease_profits_date} {greatest_decrease_profits}")
 print("```")
-
-
-  
-         
-
-    
+# Specify the file path
+file_path = 'PyBank/Analysis/BankOutput.txt'
+# Open the file for writing
+with open(file_path, 'w', newline='') as wf: 
+    writer = csv.writer(wf, delimiter=',')
+    writer.writerow('totalMonths')
