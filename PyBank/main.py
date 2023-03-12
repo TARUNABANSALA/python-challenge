@@ -1,5 +1,4 @@
 import csv
-import math
 read_fpath = ("PyBank/Resources/budget_data.csv")
 # Assigning variables
 change_profit_losses_list = [] 
@@ -52,6 +51,13 @@ print("```")
 # Specify the file path
 file_path = 'PyBank/Analysis/BankOutput.txt'
 # Open the file for writing
-with open(file_path, 'w', newline='') as wf: 
-    writer = csv.writer(wf, delimiter=',')
-    writer.writerow('totalMonths')
+with open(file_path, 'w',  newline='') as wf: 
+    wf.write('```text\n')
+    wf.write('Financial Analysis\n')
+    wf.write('----------------------------\n')
+    wf.write('Total Months = ' + str(totalMonths) + '\n')
+    wf.write('Total Net amount = ' + str(netAmount) + '\n')
+    wf.write('Average change = ' + str(Average_change) + '\n')
+    wf.write('Greatest Increase in Profits = ' + str(greatest_increase_profits_date) + ' ' + str(greatest_increase_profits) + '\n')
+    wf.write('Greatest Decrease in Profits = ' + str(greatest_decrease_profits_date) + ' ' + str(greatest_decrease_profits) + '\n')
+    wf.write('```')
