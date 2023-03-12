@@ -1,9 +1,39 @@
 ## PyBank Instructions
-In this challenge, you are tasked with creating a Python script to analyze the financial records of your company. You will give a set of financial data called [budget_data.csv](PyBank/Resources/budget_data.csv). The dataset is composed of two columns: "Date" and "Profit/Losses". (Thankfully, your company has rather lax standards for accounting, so the records are simple.)
+In this challenge, we have to create a Python script to analyze the financial records of our company. We were given a set of financial data called [budget_data.csv](PyBank/Resources/budget_data.csv). The dataset is composed of two columns: "Date" and "Profit/Losses".
+We created a Python script that analyzes the records to calculate each of the following:
 
-Your task is to create a Python script that analyzes the records to calculate each of the following:
+*First we read a csv file: describe the file path
+*Then we assigned variables, lists an dictionaries
+* We open the csv file through csv.reader function
+Putting inputs from csv file to python variable, lists or dictionary
+*A dictionary is being created based on Profit/losses as key and Date as Value
+*Read the rows from the csv file and made a dictionary out of it in the main.py program, the headers of csv file were removed by putting an IF statement
+* The total number of months included in the dataset: a variable named "netAmount = 0" was created and it was calculated via for loop iteration of row[1]: profit/losses 
 
-* The total number of months included in the dataset
+# Calculating Total Months
+    totalMonths = len(dictionary.values())
+# Calculating Average Change
+    # Making a dictionary for change in profit/losses
+    changeProfitLossDict = {}
+    greatest_increase_profits_date = ''
+    greatest_decrease_profits_date = ''
+    # Making a list of Profit/losses using dictionary key values
+    profitLossList = list(dictionary.keys())
+    for i in range(0, len(profitLossList)-1):
+        changeInProfitLoss = int(profitLossList[i+1]) - int(profitLossList[i])
+        change_profit_losses_list.append(changeInProfitLoss)
+        # getting the date of Change by calling values from dictionary
+        dateOfChange = dictionary.get(profitLossList[i+1])
+        # Making a new dictionary of key: changeInProfitLoss and value: dateOfChange
+        changeProfitLossDict[changeInProfitLoss] = dateOfChange
+        sum_of_change = (sum_of_change + int(change_profit_losses_list[i]))
+        # Calulating the average change
+    Average_change = round((sum_of_change/len(change_profit_losses_list)), 2) 
+#  The greatest increase in profits (date and amount) over the entire period
+    greatest_increase_profits = max(change_profit_losses_list)
+    greatest_increase_profits_date = changeProfitLossDict.get(greatest_increase_profits)
+    greatest_decrease_profits = min(change_profit_losses_list)
+    greatest_decrease_profits_date = changeProfitLossDict.get(greatest_decrease_profits)
 
 * The net total amount of "Profit/Losses" over the entire period
 
@@ -13,25 +43,11 @@ Your task is to create a Python script that analyzes the records to calculate ea
 
 * The greatest decrease in profits (date and amount) over the entire period
 
-Your analysis should look similar to the following:
-
-  ```text
-  Financial Analysis
-  ----------------------------
-  Total Months: 86
-  Total: $22564198
-  Average Change: $-8311.11
-  Greatest Increase in Profits: Aug-16 ($1862002)
-  Greatest Decrease in Profits: Feb-14 ($-1825558)
-  ```
-
 In addition, your final script should both print the analysis to the terminal and export a text file with the results.
 
 ## PyPoll Instructions
 
-In this challenge, you are tasked with helping a small, rural town modernize its vote counting process.
-
-You will be given a set of poll data called [election_data.csv](PyPoll/Resources/election_data.csv). The dataset is composed of three columns: "Voter ID", "County", and "Candidate". Your task is to create a Python script that analyzes the votes and calculates each of the following:
+In this challenge, we have to create a python script for helping a small, rural town modernize its vote counting process. We were given a set of poll data called [election_data.csv](PyPoll/Resources/election_data.csv). The dataset is composed of three columns: "Voter ID", "County", and "Candidate". Our task is to create a Python script that analyzes the votes and calculates each of the following:
 
 * The total number of votes cast
 
@@ -43,20 +59,5 @@ You will be given a set of poll data called [election_data.csv](PyPoll/Resources
 
 * The winner of the election based on popular vote.
 
-Your analysis should look similar to the following:
-
-
-  ```text
-  Election Results
-  -------------------------
-  Total Votes: 369711
-  -------------------------
-  Charles Casper Stockham: 23.049% (85213)
-  Diana DeGette: 73.812% (272892)
-  Raymon Anthony Doane: 3.139% (11606)
-  -------------------------
-  Winner: Diana DeGette
-  -------------------------
-  ```
 
 In addition, your final script should both print the analysis to the terminal and export a text file with the results.
