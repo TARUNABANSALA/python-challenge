@@ -1,5 +1,4 @@
 import csv
-import math
 read_fpath = ("C:/Users/panka/OneDrive/Desktop/Class Folder/Github/python-challenge/PyPoll/Resources/election_data.csv")
 # Assigning variables
 Ballotid = []
@@ -46,3 +45,20 @@ print("-------------------------")
 print(f"winner = {winner}")
 print("-------------------------")
 print("```")
+# Specify the file path
+file_path = 'PyPoll/Analysis/PollOutput.txt'
+# Open the file for writing
+with open(file_path, 'w',  newline='') as wf:
+    wf.write('```text\n')
+    wf.write('Election Results\n')
+    wf.write('-------------------------\n')
+    wf.write('Total Votes =' + str(Net_total_Votes) + '\n')
+    wf.write('-------------------------\n')
+    wf.write(str(name_Candidates[0]) + ':' + ' ' + str(candidate_percentage_votes[0]) + '%' + ' ' + str(candidate_count[0]) + '\n')
+    wf.write(str(name_Candidates[1]) + ':' + ' ' + str(candidate_percentage_votes[1]) + '%' + ' ' + str(candidate_count[1]) + '\n')
+    wf.write(str(name_Candidates[2]) + ':' + ' ' + str(candidate_percentage_votes[2]) + '%' + ' ' + str(candidate_count[2]) + '\n')
+    wf.write('-------------------------\n')
+    wf.write('winner = ' + str(winner) + '\n')
+    wf.write('-------------------------\n')
+    wf.write('```') 
+    
