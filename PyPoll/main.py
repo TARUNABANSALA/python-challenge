@@ -1,6 +1,8 @@
 import csv
-read_fpath = ("C:/Users/panka/OneDrive/Desktop/Class Folder/Github/python-challenge/PyPoll/Resources/election_data.csv")
-# Assigning variables
+# Assigning filepath for reading
+read_fpath = ("PyPoll\Resources\election_data.csv")
+
+# Assigning variables: all the variables & lists have been defined thoroughly in the readme file
 Ballotid = []
 Candidates = []
 Net_total_Votes = 0
@@ -9,13 +11,19 @@ winner = ''
 name_Candidates = []
 candidate_percentage_votes = []
 candidate_count = []
+
+# Reading the file
 with open(read_fpath, 'r') as f: 
     reader = csv.reader(f, delimiter=',')
+# Taking off the header
     header_row = next(f)
+# Adding the csv file data into the lists that we created above
     for row in reader: 
         #print(row[0], row[1])
         Ballotid.append(row[0])
         Candidates.append(row[2])
+# Calculations
+# Total number of votes
     for x in range(len(Ballotid)):
         Net_total_Votes = Net_total_Votes + 1
 # * The total number of votes each candidate won = total particular votes
@@ -33,6 +41,8 @@ with open(read_fpath, 'r') as f:
         if(count > maxVotes):
             winner = items
             maxVotes = count
+
+# Printing the results according to the given format
 print("```text")
 print("Election Results")
 print("-------------------------")
@@ -45,6 +55,7 @@ print("-------------------------")
 print(f"winner = {winner}")
 print("-------------------------")
 print("```")
+# Exported a text file with the results in file named "PollOutput.txt".
 # Specify the file path
 file_path = 'PyPoll/Analysis/PollOutput.txt'
 # Open the file for writing
